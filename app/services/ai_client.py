@@ -17,7 +17,7 @@ async def call_ai_generate(client: httpx.AsyncClient, payload: AIServiceRequest)
     response = await client.post(
         f"{AI_SERVICE_URL}/ai/generate",
         json=payload.model_dump(),
-        timeout=30.0
+        timeout=90.0
     )
     response.raise_for_status()
     return AIServiceResponse(**response.json())

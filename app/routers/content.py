@@ -70,7 +70,8 @@ async def generate_strategy(brief: ContentBrief, request: Request):
         text_overlays=ai_response.text_overlays,
         call_to_action=ai_response.call_to_action,
         confidence_score=ai_response.confidence_score,
-        similar_viral_examples=ai_response.similar_viral_examples
+        similar_viral_examples=ai_response.similar_viral_examples,
+        identity_check=ai_response.identity_check,
     )
 
 

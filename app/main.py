@@ -13,7 +13,7 @@ async def lifespan(app: FastAPI):
     - À l'arrêt : ferme proprement le client
     """
     # Startup
-    app.state.ai_client = httpx.AsyncClient(timeout=30.0)
+    app.state.ai_client = httpx.AsyncClient(timeout=90.0)
     print("[OK] Backend demarre - Client HTTP pret pour l'AI Service")
     yield
     # Shutdown
