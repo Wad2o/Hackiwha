@@ -2,28 +2,32 @@ from pydantic import BaseModel, Field
 from typing import Literal, Optional, List
 
 
+# ── Alerte de cohérence (remplace IdentityCheck) ──
+class CoherenceAlert(BaseModel):
+    niveau: Literal["forte", "moyenne", "faible"]
+    piliers_en_decalage: List[Literal["TON", "UNIVERS_VISUEL", "PROXIMITE", "SUJETS", "RYTHME"]] = []
+    recommandation: str
+    justification: str
+
+
 # ========== REQUÊTES DU FRONTEND ==========
 
 class ContentBrief(BaseModel):
-    """Ce que l'utilisateur envoie depuis le frontend"""
     product_name: str = Field(..., description="Nom du produit")
     product_description: Optional[str] = Field(None, description="Description du produit")
     target_platform: Literal["tiktok", "instagram_reels", "youtube_shorts"] = Field(
         ..., description="Plateforme cible"
     )
-    account_niche: str = Field(..., description="Niche du compte (tech/gaming/fashion/...)")
+    account_niche: str = Field(..., description="Niche du compte")
     tone: Literal["hype", "educational", "storytelling", "comedy"] = Field(
         ..., description="Ton de la vidéo"
     )
-    duration_preference: Optional[int] = Field(
-        None, description="Durée préférée en secondes (None = auto)"
-    )
+    duration_preference: Optional[int] = Field(None, description="Durée préférée en secondes")
     video_length: int = Field(..., ge=5, le=180, description="Durée de la vidéo en secondes")
     text_content: str = Field(..., description="Texte / script de l'utilisateur")
 
 
 class VideoUploadMeta(BaseModel):
-    """Métadonnées quand l'utilisateur upload une vidéo"""
     platform: Literal["tiktok", "instagram_reels", "youtube_shorts"]
     niche: str
     video_length: int
@@ -53,7 +57,6 @@ class EffectRecommendation(BaseModel):
 
 
 class ViralStrategy(BaseModel):
-    """La stratégie complète renvoyée au frontend"""
     content_brief: ContentBrief
     hook: HookRecommendation
     sound: SoundRecommendation
@@ -63,13 +66,7 @@ class ViralStrategy(BaseModel):
     call_to_action: str
     confidence_score: float = Field(..., ge=0, le=1)
     similar_viral_examples: List[str]
-
-
-class IdentityCheck(BaseModel):
-    is_on_brand: bool
-    score: float = Field(..., ge=0, le=1)
-    feedback: str
-    risks: List[str] = []
+    identity_check: Optional[CoherenceAlert] = None
 
 
 class VideoAnalysis(BaseModel):
@@ -78,7 +75,7 @@ class VideoAnalysis(BaseModel):
     hook_score: float
     pacing_score: float
     audio_sync_score: float
-    identity_check: IdentityCheck
+    identity_check: CoherenceAlert
     improvements: List[str]
     ai_verdict: Literal["publish", "revise", "reject"]
 
@@ -86,13 +83,11 @@ class VideoAnalysis(BaseModel):
 # ========== COMMUNICATION BACKEND ↔ AI SERVICE ==========
 
 class AIServiceRequest(BaseModel):
-    """Ce que le backend envoie à l'AI Service"""
     brief: ContentBrief
     dataset_insights: dict
 
 
 class AIServiceResponse(BaseModel):
-    """Ce que l'AI Service renvoie au backend"""
     hook: dict
     sound: dict
     effects: List[dict]
@@ -101,20 +96,19 @@ class AIServiceResponse(BaseModel):
     call_to_action: str
     confidence_score: float
     similar_viral_examples: List[str]
+    identity_check: Optional[CoherenceAlert] = None
 
 
 class AIAnalyzeRequest(BaseModel):
-    """Ce que le backend envoie à l'AI Service pour analyse vidéo"""
     video_path: str
     brief: ContentBrief
 
 
 class AIAnalyzeResponse(BaseModel):
-    """Ce que l'AI Service renvoie après analyse vidéo"""
     detected_hook: str
     hook_score: float
     pacing_score: float
     audio_sync_score: float
-    identity_check: dict
+    identity_check: CoherenceAlert
     improvements: List[str]
     ai_verdict: str
