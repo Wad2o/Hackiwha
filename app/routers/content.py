@@ -274,17 +274,18 @@ async def get_brand(userId: str, db: AsyncSession = Depends(get_db)):
 
 # ========== CRUD POSTS ==========
 
-@router.post("/posts", response_model=PostOut)
-async def create_post(post: PostCreate, db: AsyncSession = Depends(get_db)):
-    result = await db.execute(select(User).where(User.userId == post.user_id))
-    if not result.scalar_one_or_none():
-        raise HTTPException(status_code=404, detail="User not found")
-
-    db_post = PostModel(**post.model_dump(by_alias=False))
-    db.add(db_post)
-    await db.commit()
-    await db.refresh(db_post)
-    return db_post
+# JSON version kept here for later use if we want to re-enable a body-based endpoint.
+# @router.post("/posts", response_model=PostOut)
+# async def create_post(post: PostCreate, db: AsyncSession = Depends(get_db)):
+#     result = await db.execute(select(User).where(User.userId == post.user_id))
+#     if not result.scalar_one_or_none():
+#         raise HTTPException(status_code=404, detail="User not found")
+#
+#     db_post = PostModel(**post.model_dump(by_alias=False))
+#     db.add(db_post)
+#     await db.commit()
+#     await db.refresh(db_post)
+#     return db_post
 
 
 @router.post("/posts/form", response_model=PostOut)
