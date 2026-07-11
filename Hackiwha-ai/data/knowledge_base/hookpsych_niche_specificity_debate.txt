@@ -1,0 +1,15 @@
+Hook psychology, community debate: do these patterns only work for the growth/marketing niche?
+
+Unresolved in the corpus. One argument holds these hooks only work because
+growth/marketing audiences already want more views, biasing the
+measurement. A counter-argument cites examples outside that niche (physical
+therapy, language learning) with unverified numbers (roughly 40% of
+high-retention Reels analyzed reportedly came from non-marketing accounts,
+and changing the hook alone reportedly added +20-30% watch time).
+Calibration note: this counter-argument remains anecdotal, not a hard
+dataset — treat with caution.
+
+Related debate: niche specificity beats generic pattern. A hook that works
+in finance doesn't necessarily work in postpartum fitness. Test patterns
+within your own niche rather than copying one that worked elsewhere
+verbatim, even if the underlying psychological mechanism seems transferable.

@@ -1,0 +1,6 @@
+SFX and visual references: Gaming content
+
+SFX: keep the game's own audio as the base; add impact/whoosh sounds only on
+highlights (kill, win, fail).
+Refs: fast cuts locked to the action, small webcam overlay, reactive
+on-screen text (emotes, counters).

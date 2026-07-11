@@ -1,0 +1,5 @@
+Cut rhythm by video format
+
+- Short/Reel: cut every 1-2 seconds on average.
+- Long-form explainer: cut every 4-8 seconds.
+- Vlog: looser rhythm, locked to natural action rather than a fixed timer.

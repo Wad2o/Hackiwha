@@ -1,0 +1,20 @@
+Hook psychology: brand-level hook patterns (3 families)
+
+- Duolingo: pattern interrupt — the mascot does something unexpected in the
+  first 2 seconds.
+- Apple: visual contrast — clean, minimal opening, the eye locks onto the
+  product immediately.
+- Ryanair: self-deprecating honesty — openly admits its flaws ("our flights
+  are cheap, don't expect luxury").
+- Starbucks: sensory association — warm, cozy atmosphere established before
+  the logo even appears.
+- Nike: immediate relatability — shows someone struggling, empathetic
+  register rather than aspirational.
+- Tesla: statistic interrupt — opens on a fact that challenges common
+  thinking before showing the product.
+- Red Bull: in medias res entry — no intro, viewer is dropped straight into
+  extreme action.
+
+These 7 patterns group into 3 psychological responses: pattern break
+(Duolingo, Red Bull), emotional resonance (Starbucks, Nike, Ryanair), and
+curiosity gap (Tesla, Apple).

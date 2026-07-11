@@ -1,0 +1,251 @@
+{
+  "model_name": "BAAI/bge-small-en-v1.5",
+  "dim": 384,
+  "docs": [
+    {
+      "id": "cutrhythm_by_format",
+      "source": "cutrhythm_by_format.txt",
+      "text": "Cut rhythm by video format\n\n- Short/Reel: cut every 1-2 seconds on average.\n- Long-form explainer: cut every 4-8 seconds.\n- Vlog: looser rhythm, locked to natural action rather than a fixed timer."
+    },
+    {
+      "id": "hookformula_beauty",
+      "source": "hookformula_beauty.txt",
+      "text": "Hook formula: Beauty / Fashion content\n\nThe final result (full look) shown in 1 second before unfolding the\nstep-by-step process.\nFormula: Final result -> \"Here's how\" -> steps."
+    },
+    {
+      "id": "hookformula_comedy",
+      "source": "hookformula_comedy.txt",
+      "text": "Hook formula: Comedy / Sketch content\n\nThe very first line or situation must already contain an incongruity or\ncomedic twist. No long setup.\nFormula: Immediate absurd situation -> development -> punchline."
+    },
+    {
+      "id": "hookformula_finance",
+      "source": "hookformula_finance.txt",
+      "text": "Hook formula: Finance / Business content\n\nA shocking or counter-intuitive number as the opener (\"I lost $10,000\nlearning this\"). Concrete numbers and gains/losses hook harder than an\nabstract concept.\nFormula: Shocking number or result -> problem/context -> explanation/lesson."
+    },
+    {
+      "id": "hookformula_fitness",
+      "source": "hookformula_fitness.txt",
+      "text": "Hook formula: Fitness / Sport content\n\nShow the transformation or result (before/after, record broken) as the\nopener.\nFormula: Visual result -> \"Here's the program\" -> exercise details."
+    },
+    {
+      "id": "hookformula_food",
+      "source": "hookformula_food.txt",
+      "text": "Hook formula: Cooking / Food content\n\nTight, appetizing shot of the finished dish (visual + food sound) before\nshowing the prep.\nFormula: Finished dish close-up + appetizing sound -> \"Here's how\" ->\nprep steps."
+    },
+    {
+      "id": "hookformula_gaming",
+      "source": "hookformula_gaming.txt",
+      "text": "Hook formula: Gaming content\n\nShow the session's most spectacular moment (clutch, fail, record) in the\nfirst 2 seconds, then rewind to loop back — the beginning is the ending.\nFormula: Highlight -> \"How I got here\" -> full gameplay."
+    },
+    {
+      "id": "hookformula_general_rule",
+      "source": "hookformula_general_rule.txt",
+      "text": "Hook formula: general rule across all themes\n\nThe hook must land in the first 1-3 seconds. Its only job is stopping the\nscroll. The hook's format changes by theme/niche, but the base structure\nstays the same: Promise or Tension + quick proof it's worth staying for.\n\nCross-theme rule: avoid the 3 hook killers regardless of theme: (1) a\nlogo/animated intro longer than 1 second, (2) a generic greeting line\n(\"Hey everyone, today...\"), (3) too much context before reaching the topic.\nThe first word or first image must already be \"the content\", not the\nwrapper."
+    },
+    {
+      "id": "hookformula_motivation",
+      "source": "hookformula_motivation.txt",
+      "text": "Hook formula: Motivation / Personal development content\n\nA statement that goes against common wisdom (\"Stop trying to be productive\nevery single day\"), capturing attention through friction with what the\nviewer thinks they know.\nFormula: Counter-intuitive statement -> justification -> actionable advice."
+    },
+    {
+      "id": "hookformula_review",
+      "source": "hookformula_review.txt",
+      "text": "Hook formula: Review / Unboxing content\n\nGive the verdict or score right at the start (\"Is this $500 product worth\nit? My answer in 60 seconds\"), not at the end. This creates tension: the\nviewer stays to understand the \"why\".\nFormula: Teased verdict -> product context -> detailed justification."
+    },
+    {
+      "id": "hookformula_tech",
+      "source": "hookformula_tech.txt",
+      "text": "Hook formula: Tech / Dev / AI content\n\nShow the final result BEFORE explaining how you got there (\"Here's what I\nbuilt in 10 minutes with AI\" + show the app running immediately). Avoid\nopening with \"Hey, today I'm going to show you...\" — it kills attention\ninstantly.\nFormula: Shocking result -> \"How I did it\" -> tutorial."
+    },
+    {
+      "id": "hookformula_travel",
+      "source": "hookformula_travel.txt",
+      "text": "Hook formula: Travel content\n\nThe most spectacular shot of the location (drone, landscape, unique moment)\nin the very first second, no intro text.\nFormula: Shocking shot -> location title on screen -> the travel story."
+    },
+    {
+      "id": "hookformula_tutorial",
+      "source": "hookformula_tutorial.txt",
+      "text": "Hook formula: Tutorial / Educational content\n\nState the problem the viewer has likely already experienced, in one\nsentence (\"If your Python code always crashes on this error, watch this\").\nThe viewer must recognize themselves within 2 seconds.\nFormula: Recognizable problem -> Promise of a quick solution -> content."
+    },
+    {
+      "id": "hookformula_vlog",
+      "source": "hookformula_vlog.txt",
+      "text": "Hook formula: Vlog / Lifestyle content\n\nStart in medias res, not with \"today I'll show you my day\". Preview a\nstrong or funny moment from the middle of the day, then rewind to the\nstart.\nFormula: Shocking clip from mid-video -> \"How we got here\" -> chronological\nwalkthrough."
+    },
+    {
+      "id": "hookpsych_ab_testing_method",
+      "source": "hookpsych_ab_testing_method.txt",
+      "text": "Hook psychology: A/B testing method for hooks\n\n1. Record the underlying video footage only once.\n2. Edit three different hooks, each from a different psychological category.\n3. Post 24-48h apart, or on different platforms.\n4. Compare retention curves — most platforms show exactly where people drop\n   off; a weak hook produces a \"cliff\" in the first 2 seconds.\n5. Never re-upload the exact same video file cross-platform: platforms\n   detect duplicates and suppress reach. Re-filming the hook, even from a\n   slightly different angle, counts as original content.\n\nFor manual tracking (no bulk export exists for short-form retention),\nrecommended columns: date, platform, hook ID, views, retention at 3s/15s/30s.\nOne cited creator spends 60-110 minutes a day on this."
+    },
+    {
+      "id": "hookpsych_authenticity_debate",
+      "source": "hookpsych_authenticity_debate.txt",
+      "text": "Hook psychology, community debate: from \"guru\" hooks to human-sounding hooks\n\nMultiple sources converge on one point: today's best hooks sound like\ngenuine, well-articulated human moments, not something overtly \"marketed\".\nInformal test cited: if the hook sounds like a dinner-table conversation,\npeople lean in; the moment it sounds like an ad, they drop off.\n\nRelated: the right balance between over-polished and over-fake speech — a\nprecisely targeted vulnerability — is what breaks down strangers' distrust\nonline. But once a vulnerability pattern gets identified and copied by\neveryone, the \"performed\" versions become noticeable: what lasts over time\nare versions that resemble genuine spontaneous thought rather than\ncalculated vulnerability performance."
+    },
+    {
+      "id": "hookpsych_benchmarks_engagement",
+      "source": "hookpsych_benchmarks_engagement.txt",
+      "text": "Hook psychology: 12-month A/B benchmark, engagement rate by hook type\n\nData from a test where only the hook changes, identical content, posted on\nInstagram/X/Reddit:\n\n- \"I spent $X and learned Y\": 8.4% (best score)\n- \"Unpopular opinion:\": 7.1%\n- \"Nobody talks about...\": 4.2%\n- \"Here is what worked / what did not\": 3.9%\n- \"X mistakes I made...\": 3.1%\n- \"The truth about...\": 2.4%\n- \"How to...\": 1.8% (lowest score, seen as dated in 2026 and associated with\n  paid-course imagery)\n\nAdditional insight: replying to all first-hour comments doubled reach on\nidentical content — the hook is not the only lever, first-hour activity\nmatters just as much."
+    },
+    {
+      "id": "hookpsych_benchmarks_retention",
+      "source": "hookpsych_benchmarks_retention.txt",
+      "text": "Hook psychology: 30-day tracking of 30 hook styles (~180 videos)\n\nData collected across combined TikTok/Reels/Shorts:\n\n- Overall average across all categories: 4,700 views (median 3,100 views).\n- Controversial Pattern Interrupt: 14,300 views average, 73% 3-second\n  retention — best score, roughly 3x the average.\n- Ultra-Specific Promise: 12,100 views average, 68% 3-second retention —\n  roughly 2.5x the average.\n- Generic question (e.g. \"Are you struggling with X?\"): only 2,400 views,\n  18% 15-second retention — clearly below average."
+    },
+    {
+      "id": "hookpsych_brand_patterns",
+      "source": "hookpsych_brand_patterns.txt",
+      "text": "Hook psychology: brand-level hook patterns (3 families)\n\n- Duolingo: pattern interrupt — the mascot does something unexpected in the\n  first 2 seconds.\n- Apple: visual contrast — clean, minimal opening, the eye locks onto the\n  product immediately.\n- Ryanair: self-deprecating honesty — openly admits its flaws (\"our flights\n  are cheap, don't expect luxury\").\n- Starbucks: sensory association — warm, cozy atmosphere established before\n  the logo even appears.\n- Nike: immediate relatability — shows someone struggling, empathetic\n  register rather than aspirational.\n- Tesla: statistic interrupt — opens on a fact that challenges common\n  thinking before showing the product.\n- Red Bull: in medias res entry — no intro, viewer is dropped straight into\n  extreme action.\n\nThese 7 patterns group into 3 psychological responses: pattern break\n(Duolingo, Red Bull), emotional resonance (Starbucks, Nike, Ryanair), and\ncuriosity gap (Tesla, Apple)."
+    },
+    {
+      "id": "hookpsych_categories_1",
+      "source": "hookpsych_categories_1.txt",
+      "text": "Hook psychology, part 1: Curiosity Gap, Problem Amplification, Authority Challenge, Transformation\n\nCuriosity Gap: the gap between what's known and what's wanted activates the\nbrain's dopamine reward-anticipation circuit. Weak if too vague (\"I tried\nsomething\") — must be specific.\n\nProblem Amplification: exploits loss aversion; avoided pain motivates more\nthan gained pleasure. Must name the precise symptom, not the general\ncategory.\n\nAuthority Challenge: activates threat evaluation and belief updating;\nconflict can't be ignored. Risky: without credible proof behind it, the\nbacklash is worse than not posting at all.\n\nTransformation / Before-After: aspirational desire, same mechanism as\nmakeover shows. Works best with a concrete numeric contrast."
+    },
+    {
+      "id": "hookpsych_categories_2",
+      "source": "hookpsych_categories_2.txt",
+      "text": "Hook psychology, part 2: Relatability, Urgency, Contradiction, Specificity Effect\n\nRelatability / POV: social validation, confirms a shared experience.\nGenerates the most comments; validation test: \"would someone tag a friend\nunder this?\"\n\nUrgency / FOMO: scarcity heuristic — what's limited or insider feels more\nvaluable. Manufactured urgency erodes trust over time.\n\nContradiction & Contrast: creates unresolved tension the brain can't let go\nof without a response.\n\nSpecificity Effect: a bizarrely precise detail creates instant credibility\nsignal (\"this person really lived this\"). Must speak to one single person,\nnot an audience."
+    },
+    {
+      "id": "hookpsych_categories_3",
+      "source": "hookpsych_categories_3.txt",
+      "text": "Hook psychology, part 3: Timeframe Tension, Honest Admission, Controversial Gotcha, Pattern Interrupt, Money-Specific\n\nTimeframe Tension: short or unexpected deadlines trigger a curiosity loop\nand hope of attainability. Present in almost every \"growth story\" hook.\n\nHonest Admission / Vulnerability: counters \"polished guru\" fatigue,\nself-deprecation becomes the hook. Must sound spontaneous, not rehearsed.\n\nControversial \"Gotcha\": a shocking claim followed by a hypothetical reveal.\nMixed community reception, close to ragebait — some dislike it while\nadmitting it works.\n\nPattern Interrupt (brand): an unexpected sound, visual, or claim breaks the\nscroll before the message is even understood.\n\nMoney-Specific Hook: a precise dollar amount beats generic educational\nframing, roughly 4x in one cited test."
+    },
+    {
+      "id": "hookpsych_checklist_killers",
+      "source": "hookpsych_checklist_killers.txt",
+      "text": "Hook psychology: checklist of hook killers (eliminate systematically)\n\n- Slow intro (\"Hey guys, so today I wanted to talk about...\").\n- Payoff buried at the end of the video instead of teased upfront.\n- First frame that looks like every other frame in the feed, nothing\n  distinctive.\n- No text overlay in the first second — many people watch muted.\n- Manufactured urgency or fake scarcity.\n- Authority challenge launched without credible proof behind it.\n- Vulnerability that sounds \"rehearsed\" — audiences detect performed\n  authenticity versus genuine spontaneous thought."
+    },
+    {
+      "id": "hookpsych_content_type_mapping",
+      "source": "hookpsych_content_type_mapping.txt",
+      "text": "Hook psychology: content type -> recommended hook pattern mapping\n\n- Tutorial / How-to -> Problem Amplification, Transformation. The viewer\n  must feel the problem before wanting the solution.\n- Product test -> Curiosity Gap, Urgency. Builds suspense around the\n  verdict.\n- Vlog / Day in the life -> Relatability, POV. Viewers stay for content\n  reflecting their own experience.\n- Hot take / Opinion -> Authority Challenge. Conflict draws attention.\n- Storytime -> Curiosity Gap, Transformation. Sets up a narrative arc the\n  viewer must finish.\n- Limited offer / Launch -> Urgency, FOMO. Natural scarcity makes urgency\n  authentic and credible."
+    },
+    {
+      "id": "hookpsych_growth_debate",
+      "source": "hookpsych_growth_debate.txt",
+      "text": "Hook psychology, community debate: the hook explains the spike, not sustained growth\n\nA viral hook can explain a one-off view spike without explaining an\naccount's long-term growth. Cited example: one account plateaued around 48k\nfollowers after a viral hook, while another kept growing to about 98k. This\nsuggests the quality of content following the winning hook matters at least\nas much as the hook itself for long-term growth.\n\nRelated: accounts whose topic is literally \"how to grow on social media\"\nare among today's best-performing niches, often starting from zero and\nexploding by teaching growth itself — a self-referential effect worth\nremembering so as not to over-generalize their results to other niches."
+    },
+    {
+      "id": "hookpsych_niche_specificity_debate",
+      "source": "hookpsych_niche_specificity_debate.txt",
+      "text": "Hook psychology, community debate: do these patterns only work for the growth/marketing niche?\n\nUnresolved in the corpus. One argument holds these hooks only work because\ngrowth/marketing audiences already want more views, biasing the\nmeasurement. A counter-argument cites examples outside that niche (physical\ntherapy, language learning) with unverified numbers (roughly 40% of\nhigh-retention Reels analyzed reportedly came from non-marketing accounts,\nand changing the hook alone reportedly added +20-30% watch time).\nCalibration note: this counter-argument remains anecdotal, not a hard\ndataset — treat with caution.\n\nRelated debate: niche specificity beats generic pattern. A hook that works\nin finance doesn't necessarily work in postpartum fitness. Test patterns\nwithin your own niche rather than copying one that worked elsewhere\nverbatim, even if the underlying psychological mechanism seems transferable."
+    },
+    {
+      "id": "hookpsych_platform_adaptation",
+      "source": "hookpsych_platform_adaptation.txt",
+      "text": "Hook psychology: platform adaptation\n\n- TikTok: raw, fast, chaotic energy. The hook must land on the very first\n  word, no warm-up, with a mid-thought interruption effect. Bold text helps\n  since many watch muted. Jump cuts in the first second signal dynamism to\n  the algorithm.\n- Instagram Reels: more polished, aspirational energy. About 0.5s more\n  tolerance before a swipe. The first aesthetic frame matters more.\n  Transformation and POV formats overperform, matching the platform's\n  aspirational culture.\n- YouTube Shorts: a slightly longer setup is tolerated; a two-sentence hook\n  can work where TikTok demands one sentence. Retention is heavily rewarded\n  by the algorithm. Curiosity gap and authority challenge work particularly\n  well since the audience is used to more educational short-form content."
+    },
+    {
+      "id": "hookpsych_pre_publish_tests",
+      "source": "hookpsych_pre_publish_tests.txt",
+      "text": "Hook psychology: quick self-administered tests before publishing\n\n- Hook test: would the first second alone make someone stop scrolling? If\n  not, the hook isn't finished.\n- Relatability test: would someone tag a friend under this post? A \"hmm\n  interesting\" reaction isn't enough — there must be a concrete urge to\n  share.\n- Thumb-stop rule: interesting visual + engaging music + a fast, clear hook\n  together is what physically stops the scrolling thumb."
+    },
+    {
+      "id": "hookpsych_reliability_notes",
+      "source": "hookpsych_reliability_notes.txt",
+      "text": "Hook psychology: source reliability notes\n\n- Cited figures come from individual Reddit posts, unverified and not\n  peer-reviewed: treat as practitioner heuristics, never as established\n  statistical truths.\n- A near-identical duplicate of the \"1000+ viral hooks analyzed\" post was\n  identified (published twice, nearly identical text), as was a duplicate of\n  the \"47 hooks\" guide reposted almost verbatim elsewhere — deduplicated in\n  the dataset, mentioned here for transparency.\n- Two source posts mentioned commercial tools (a \"Free Viral Hook\n  Generator\", a dashboard named \"Crescitaly\") — excluded from the dataset as\n  product placement in the source material, not genuine hook knowledge."
+    },
+    {
+      "id": "hookpsych_specificity_rule",
+      "source": "hookpsych_specificity_rule.txt",
+      "text": "Hook psychology: the specificity rule (most repeated principle in the corpus)\n\nThe single most repeated principle across all analyzed discussions:\n\n- Speak to one single person rather than an audience.\n- \"I tried something\" (weak) vs \"I tracked every dollar I spent for 30 days\"\n  (strong).\n- \"I spent $X and learned Y\" beats a generic \"How to...\" framing by roughly\n  4x in engagement rate.\n- An \"Ultra-Specific Promise\" averages 12,100 views with 68% 3-second\n  retention, versus 2,400 views and 18% 15-second retention for a generic\n  question.\n\nOperational rule: between a generic hook and a hyper-specific hook on the\nsame topic, always prefer the version containing a number, a sensory\ndetail, or an ultra-precise situation over a broad category."
+    },
+    {
+      "id": "hookpsych_summary_rule",
+      "source": "hookpsych_summary_rule.txt",
+      "text": "Hook psychology: one-rule summary\n\nA strong hook always combines four elements: a clear psychological\nmechanism (curiosity, loss, authority, aspiration, belonging, or scarcity),\nhyper-concrete specificity (a number, a sensory detail, a precise\nsituation), an adaptation to the platform's own rhythm, and a delivery that\nsounds like a real human speaking rather than an ad."
+    },
+    {
+      "id": "sfx_refs_beauty",
+      "source": "sfx_refs_beauty.txt",
+      "text": "SFX and visual references: Beauty / Fashion content\n\nSFX: soft, satisfying sounds (product application, fabric); pop sound on\nlook transitions.\nRefs: polished lighting (ring light style), before/after via split-screen or\nmorph transition, close-ups on texture and finish detail."
+    },
+    {
+      "id": "sfx_refs_comedy",
+      "source": "sfx_refs_comedy.txt",
+      "text": "SFX and visual references: Comedy / Sketch content\n\nSFX: exaggerated comedic sounds (record scratch, boing, buzzer), timed to\nthe exact frame of the punchline.\nRefs: sharp, fast cuts on punchlines; sudden zoom to emphasize a reaction."
+    },
+    {
+      "id": "sfx_refs_finance",
+      "source": "sfx_refs_finance.txt",
+      "text": "SFX and visual references: Finance / Business content\n\nSFX: discreet, professional sounds (no comedic SFX); a light impact sound\nwhen key numbers appear on screen.\nRefs: charts/text on screen for data, stable and sober framing, a paced\nrhythm that lets information sink in."
+    },
+    {
+      "id": "sfx_refs_fitness",
+      "source": "sfx_refs_fitness.txt",
+      "text": "SFX and visual references: Fitness / Sport content\n\nSFX: sound impact on key reps/efforts; energetic, rhythmic music running\ncontinuously.\nRefs: fast cuts locked to the music tempo, slow-motion on technical\nmovements, before/after split-screen."
+    },
+    {
+      "id": "sfx_refs_food",
+      "source": "sfx_refs_food.txt",
+      "text": "SFX and visual references: Cooking / Food content\n\nSFX: bring ASMR food sounds forward (sizzling, chopping, pouring); little to\nno music layered over these moments.\nRefs: macro close-ups on ingredients and the finished dish, warm lighting,\ncuts synced to preparation gestures."
+    },
+    {
+      "id": "sfx_refs_gaming",
+      "source": "sfx_refs_gaming.txt",
+      "text": "SFX and visual references: Gaming content\n\nSFX: keep the game's own audio as the base; add impact/whoosh sounds only on\nhighlights (kill, win, fail).\nRefs: fast cuts locked to the action, small webcam overlay, reactive\non-screen text (emotes, counters)."
+    },
+    {
+      "id": "sfx_refs_mixed_niches",
+      "source": "sfx_refs_mixed_niches.txt",
+      "text": "SFX and visual references: combining niches\n\nIf a video crosses two themes (e.g. a tech tutorial filmed vlog-style),\ncombine the recommendations of both categories rather than picking only\none — but always keep priority on the creator's usual personal style."
+    },
+    {
+      "id": "sfx_refs_motivation",
+      "source": "sfx_refs_motivation.txt",
+      "text": "SFX and visual references: Motivation / Personal development content\n\nSFX: marked silences after strong statements; a rising riser sound on\nemotionally intense moments.\nRefs: close-up face shots for intimacy, few cuts during key passages,\non-screen text quoting the strong statement."
+    },
+    {
+      "id": "sfx_refs_review",
+      "source": "sfx_refs_review.txt",
+      "text": "SFX and visual references: Review / Unboxing content\n\nSFX: a small pop/click when a score or verdict appears on screen; silence\nright before revealing the final rating to build tension.\nRefs: clean, well-lit product shots; split-screen for comparisons; on-screen\ntext for technical specs."
+    },
+    {
+      "id": "sfx_refs_tech",
+      "source": "sfx_refs_tech.txt",
+      "text": "SFX and visual references: Tech / Dev / AI content\n\nSFX: digital/synthetic sounds (short beeps, glitches, \"typing\" sound during\ncode moments); avoid overly organic sounds.\nRefs: terminal aesthetic, dark mode, gradients, quick cuts on results,\nscreen-capture shots prioritized over face shots."
+    },
+    {
+      "id": "sfx_refs_travel",
+      "source": "sfx_refs_travel.txt",
+      "text": "SFX and visual references: Travel content\n\nSFX: prioritize the location's ambient sound (nature, city, market) over\nmusic; whoosh sound on transitions between locations.\nRefs: wide/drone shots opening each sequence, cuts paced to the journey,\nwarm and immersive color grading."
+    },
+    {
+      "id": "sfx_refs_tutorial",
+      "source": "sfx_refs_tutorial.txt",
+      "text": "SFX and visual references: Tutorial / Educational content\n\nSFX: a subtle pop on each new step/number shown on screen; silence during\nimportant explanations.\nRefs: on-screen text on every key point, stable shots, moderate pacing\n(neither too slow nor a speedrun)."
+    },
+    {
+      "id": "sfx_refs_vlog",
+      "source": "sfx_refs_vlog.txt",
+      "text": "SFX and visual references: Vlog / Lifestyle content\n\nSFX: keep the location's natural ambient sound; minimal SFX (soft\ntransitions only); continuous background music rather than punctual SFX.\nRefs: handheld or lightly stabilized camera, cuts paced to real action,\nlittle on-screen text."
+    },
+    {
+      "id": "visualref_action_demo",
+      "source": "visualref_action_demo.txt",
+      "text": "Visual reference: action or demo moment\n\nDraw from sports/gaming edits: quick cuts locked to the music beat, dynamic\nzoom, slow-motion on the key instant (typically around 50% speed)."
+    },
+    {
+      "id": "visualref_brand_consistency",
+      "source": "visualref_brand_consistency.txt",
+      "text": "Visual identity consistency\n\nAlways pick references that stay consistent with the creator's previous\nvideos (same colors, same font, same average cut rhythm) rather than\nswitching style every video. Visual recognition is part of a creator's\npersonal brand."
+    },
+    {
+      "id": "visualref_cta_ending",
+      "source": "visualref_cta_ending.txt",
+      "text": "Visual reference: call-to-action / ending\n\nDraw from educational-creator style: calmer tone, stable framing, simple\non-screen text (subscribe, link in description)."
+    },
+    {
+      "id": "visualref_hook_opening",
+      "source": "visualref_hook_opening.txt",
+      "text": "Visual reference: video opening / hook\n\nDraw from fast-hook formats (MrBeast-style, tech creators): a punchy line + a\nquick cut under 2 seconds, no long intro. The reference must match the\ncreator's own tone, not just copy whatever style is trending."
+    },
+    {
+      "id": "visualref_storytelling",
+      "source": "visualref_storytelling.txt",
+      "text": "Visual reference: explanatory / storytelling section\n\nDraw from documentary or narrative-vlog formats: slower shots, gentle camera\nmovement, on-screen text used to reinforce key points without cluttering the\nframe."
+    }
+  ]
+}

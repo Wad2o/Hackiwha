@@ -1,0 +1,5 @@
+Hook formula: Fitness / Sport content
+
+Show the transformation or result (before/after, record broken) as the
+opener.
+Formula: Visual result -> "Here's the program" -> exercise details.

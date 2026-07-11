@@ -1,0 +1,6 @@
+Hook formula: Tutorial / Educational content
+
+State the problem the viewer has likely already experienced, in one
+sentence ("If your Python code always crashes on this error, watch this").
+The viewer must recognize themselves within 2 seconds.
+Formula: Recognizable problem -> Promise of a quick solution -> content.

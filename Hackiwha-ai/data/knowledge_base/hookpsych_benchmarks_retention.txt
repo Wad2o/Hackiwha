@@ -1,0 +1,11 @@
+Hook psychology: 30-day tracking of 30 hook styles (~180 videos)
+
+Data collected across combined TikTok/Reels/Shorts:
+
+- Overall average across all categories: 4,700 views (median 3,100 views).
+- Controversial Pattern Interrupt: 14,300 views average, 73% 3-second
+  retention — best score, roughly 3x the average.
+- Ultra-Specific Promise: 12,100 views average, 68% 3-second retention —
+  roughly 2.5x the average.
+- Generic question (e.g. "Are you struggling with X?"): only 2,400 views,
+  18% 15-second retention — clearly below average.
