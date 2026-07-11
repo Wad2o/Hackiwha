@@ -1,0 +1,13 @@
+Hook psychology: content type -> recommended hook pattern mapping
+
+- Tutorial / How-to -> Problem Amplification, Transformation. The viewer
+  must feel the problem before wanting the solution.
+- Product test -> Curiosity Gap, Urgency. Builds suspense around the
+  verdict.
+- Vlog / Day in the life -> Relatability, POV. Viewers stay for content
+  reflecting their own experience.
+- Hot take / Opinion -> Authority Challenge. Conflict draws attention.
+- Storytime -> Curiosity Gap, Transformation. Sets up a narrative arc the
+  viewer must finish.
+- Limited offer / Launch -> Urgency, FOMO. Natural scarcity makes urgency
+  authentic and credible.

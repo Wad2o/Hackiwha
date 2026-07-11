@@ -1,0 +1,7 @@
+Hook formula: Tech / Dev / AI content
+
+Show the final result BEFORE explaining how you got there ("Here's what I
+built in 10 minutes with AI" + show the app running immediately). Avoid
+opening with "Hey, today I'm going to show you..." — it kills attention
+instantly.
+Formula: Shocking result -> "How I did it" -> tutorial.

@@ -1,0 +1,11 @@
+Hook formula: general rule across all themes
+
+The hook must land in the first 1-3 seconds. Its only job is stopping the
+scroll. The hook's format changes by theme/niche, but the base structure
+stays the same: Promise or Tension + quick proof it's worth staying for.
+
+Cross-theme rule: avoid the 3 hook killers regardless of theme: (1) a
+logo/animated intro longer than 1 second, (2) a generic greeting line
+("Hey everyone, today..."), (3) too much context before reaching the topic.
+The first word or first image must already be "the content", not the
+wrapper.

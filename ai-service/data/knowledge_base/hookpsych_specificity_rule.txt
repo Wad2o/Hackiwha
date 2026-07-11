@@ -1,0 +1,16 @@
+Hook psychology: the specificity rule (most repeated principle in the corpus)
+
+The single most repeated principle across all analyzed discussions:
+
+- Speak to one single person rather than an audience.
+- "I tried something" (weak) vs "I tracked every dollar I spent for 30 days"
+  (strong).
+- "I spent $X and learned Y" beats a generic "How to..." framing by roughly
+  4x in engagement rate.
+- An "Ultra-Specific Promise" averages 12,100 views with 68% 3-second
+  retention, versus 2,400 views and 18% 15-second retention for a generic
+  question.
+
+Operational rule: between a generic hook and a hyper-specific hook on the
+same topic, always prefer the version containing a number, a sensory
+detail, or an ultra-precise situation over a broad category.

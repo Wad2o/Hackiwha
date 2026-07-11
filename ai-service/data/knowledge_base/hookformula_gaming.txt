@@ -1,0 +1,5 @@
+Hook formula: Gaming content
+
+Show the session's most spectacular moment (clutch, fail, record) in the
+first 2 seconds, then rewind to loop back — the beginning is the ending.
+Formula: Highlight -> "How I got here" -> full gameplay.

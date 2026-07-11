@@ -1,0 +1,17 @@
+Hook psychology: 12-month A/B benchmark, engagement rate by hook type
+
+Data from a test where only the hook changes, identical content, posted on
+Instagram/X/Reddit:
+
+- "I spent $X and learned Y": 8.4% (best score)
+- "Unpopular opinion:": 7.1%
+- "Nobody talks about...": 4.2%
+- "Here is what worked / what did not": 3.9%
+- "X mistakes I made...": 3.1%
+- "The truth about...": 2.4%
+- "How to...": 1.8% (lowest score, seen as dated in 2026 and associated with
+  paid-course imagery)
+
+Additional insight: replying to all first-hour comments doubled reach on
+identical content — the hook is not the only lever, first-hour activity
+matters just as much.

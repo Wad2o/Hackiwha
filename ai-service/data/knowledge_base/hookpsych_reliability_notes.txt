@@ -1,0 +1,12 @@
+Hook psychology: source reliability notes
+
+- Cited figures come from individual Reddit posts, unverified and not
+  peer-reviewed: treat as practitioner heuristics, never as established
+  statistical truths.
+- A near-identical duplicate of the "1000+ viral hooks analyzed" post was
+  identified (published twice, nearly identical text), as was a duplicate of
+  the "47 hooks" guide reposted almost verbatim elsewhere — deduplicated in
+  the dataset, mentioned here for transparency.
+- Two source posts mentioned commercial tools (a "Free Viral Hook
+  Generator", a dashboard named "Crescitaly") — excluded from the dataset as
+  product placement in the source material, not genuine hook knowledge.

@@ -1,0 +1,6 @@
+SFX and visual references: Tech / Dev / AI content
+
+SFX: digital/synthetic sounds (short beeps, glitches, "typing" sound during
+code moments); avoid overly organic sounds.
+Refs: terminal aesthetic, dark mode, gradients, quick cuts on results,
+screen-capture shots prioritized over face shots.

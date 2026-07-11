@@ -1,0 +1,14 @@
+Hook psychology: A/B testing method for hooks
+
+1. Record the underlying video footage only once.
+2. Edit three different hooks, each from a different psychological category.
+3. Post 24-48h apart, or on different platforms.
+4. Compare retention curves — most platforms show exactly where people drop
+   off; a weak hook produces a "cliff" in the first 2 seconds.
+5. Never re-upload the exact same video file cross-platform: platforms
+   detect duplicates and suppress reach. Re-filming the hook, even from a
+   slightly different angle, counts as original content.
+
+For manual tracking (no bulk export exists for short-form retention),
+recommended columns: date, platform, hook ID, views, retention at 3s/15s/30s.
+One cited creator spends 60-110 minutes a day on this.
