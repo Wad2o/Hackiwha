@@ -51,8 +51,9 @@ The app will now listen on port 5345
 
 1. Clone the repository
 2. run `uv sync` to install dependencies
-3. run `uvicorn app.main:app` to start the application
-4. App now listening on port 8000
+3. create a `.env` file based on `.env.example` and populate it with your **hugging face token**
+4. run `uvicorn app.main:app` to start the application
+5. App now listening on port 8000
 
 # API Documentation
 
