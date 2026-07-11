@@ -1,8 +1,45 @@
 __pycache__/
-*.pyc
-.env
-uploads/
-*.mp4
-*.mov
+*.py[cod]
+*$py.class
+
+# Virtual environments
 .venv/
 venv/
+env/
+ENV/
+
+# Python caches and tooling output
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+*.egg-info/
+build/
+dist/
+
+# Local configuration
+.env
+.env.*
+!.env.example
+
+# Runtime data
+uploads/
+*.db
+*.sqlite3
+app/db/viralcoach.db
+
+# Large media files
+*.mp4
+*.mov
+*.avi
+*.mkv
+
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
