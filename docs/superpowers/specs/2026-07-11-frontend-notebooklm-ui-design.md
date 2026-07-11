@@ -49,7 +49,13 @@ One question (or small group) per screen, forward/back navigation, progress bar.
 On the final step, submit everything as one multipart form to `POST /content/form-user`:
 `name, description, content_type (JSON string or comma-separated), age, gender, country, city, years, months, days`.
 
-Response is a `UserProfile` (includes its own `userId`, generated server-side via `uuid4` default — since this endpoint does not accept or require the auth `userId`, the frontend stores **this** returned `userId` as the canonical id for all subsequent `/content/*` calls). Mark onboarding complete locally (e.g. `localStorage` flag) so returning users skip straight to the main app.
+Response is a `UserProfile` with its own server-generated `userId` (via `uuid4`, unrelated to the auth token's id — the endpoint doesn't accept or check the auth `userId` at all). Mark onboarding complete locally (e.g. `localStorage` flag) so returning users skip straight to the main app.
+
+**Backend id inconsistency (verified against `app/db/models.py` and the routers, not fixed — out of scope per "only implement what's already working"):** `POST /content/brands` and `POST /content/posts/form` validate their `userId` against the `users` table (the auth account id from `/auth/register` or `/auth/login`). `POST /content/video-coach` and `POST /content/critic-video` reload the profile by `userId` from the separate `user_profiles` table (the id returned by `/content/form-user`). These are two different ids with no foreign-key link between them, so no single id satisfies both groups of endpoints. The frontend therefore keeps **two ids client-side**, each used only where the backend expects it:
+- `authUserId` (from register/login) → used for `/content/brands`, `/content/posts/form`, `GET`/`DELETE /content/posts/*`.
+- `profileUserId` (from `/content/form-user`) → used for `/content/video-coach`, `/content/critic-video`.
+
+This is invisible to the end user (just two `localStorage` keys) and requires no backend change: `/content/partner-evaluation` sends the full profile object by value rather than by id, so it's unaffected; `video-coach`'s `posts` field is an inline list of post content (no id reference), so source posts loaded via `authUserId` can still be passed into it by value.
 
 ### 3.3 Main app — 3-pane layout
 
