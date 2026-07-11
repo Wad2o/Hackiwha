@@ -238,6 +238,37 @@ def _brand_to_flat(brand: BrandCreate) -> dict:
     }
 
 
+def _brand_to_out(brand: Brand) -> BrandOut:
+    return BrandOut(
+        brandId=brand.brandId,
+        userId=brand.userId,
+        visual={
+            "logo": brand.logo,
+            "typography": {
+                "titles": brand.title_typography,
+                "texts": brand.text_typography,
+                "extra": brand.extras_typography,
+                "highlight": brand.highlights_typography,
+            },
+            "photography": brand.photography,
+            "color_palette": brand.color_palette or [],
+        },
+        tone={
+            "vocabulary": brand.vocabulary,
+            "humor_level": brand.humor_level,
+            "formality": brand.formality,
+            "sentence_rhythm": brand.sentence_rhythm,
+        },
+        positioning={
+            "target_audience": brand.target_audience,
+            "problem_statement": brand.problem_statement,
+            "flare": brand.flare,
+        },
+        created_at=brand.created_at,
+        updated_at=brand.updated_at,
+    )
+
+
 @router.post("/brands", response_model=BrandOut)
 async def create_brand(brand: BrandCreate, db: AsyncSession = Depends(get_db)):
     result = await db.execute(select(User).where(User.userId == brand.user_id))
@@ -254,13 +285,13 @@ async def create_brand(brand: BrandCreate, db: AsyncSession = Depends(get_db)):
                 setattr(existing, key, value)
         await db.commit()
         await db.refresh(existing)
-        return existing
+        return _brand_to_out(existing)
 
     db_brand = Brand(**flat)
     db.add(db_brand)
     await db.commit()
     await db.refresh(db_brand)
-    return db_brand
+    return _brand_to_out(db_brand)
 
 
 @router.get("/brands/{userId}", response_model=BrandOut)
@@ -269,7 +300,7 @@ async def get_brand(userId: str, db: AsyncSession = Depends(get_db)):
     brand = result.scalar_one_or_none()
     if not brand:
         raise HTTPException(status_code=404, detail="Brand not found")
-    return brand
+    return _brand_to_out(brand)
 
 
 # ========== CRUD POSTS ==========
