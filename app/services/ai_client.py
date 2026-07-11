@@ -1,17 +1,31 @@
+import os
 import httpx
 from fastapi import Request
-from app.models.schemas import VideoCoachRequest, VideoCoachResponse, PartnerEvaluationRequest, PartnerEvaluationResponse, CriticVideoRequest, CriticVideoResponse
+from app.models.schemas import (
+    VideoCoachRequest, VideoCoachResponse,
+    PartnerEvaluationRequest, PartnerEvaluationResponse,
+    CriticVideoResponse
+)
 
-AI_SERVICE_URL = "http://localhost:8001"  # URL de l'AI Service
+AI_SERVICE_URL = "http://localhost:8001"
+MOCK_AI = os.getenv("MOCK_AI", "true") == "true"  # true par défaut en dev
 
 
 async def get_ai_client(request: Request) -> httpx.AsyncClient:
-    """Récupère le client HTTP partagé depuis l'app FastAPI"""
     return request.app.state.ai_client
 
 
 async def call_video_coach(client: httpx.AsyncClient, payload: VideoCoachRequest) -> VideoCoachResponse:
-    """Appelle l'AI Service pour générer une stratégie virale."""
+    if MOCK_AI:
+        return VideoCoachResponse(
+            analysis="## Analyse mock\nTon contenu gaming a un fort potentiel viral.",
+            script="Intro choc → Démo gameplay → CTA abonnement",
+            hook="POV : tu découvres le glitch qui change tout 👀",
+            platform="tiktok",
+            is_loop=True,
+            suggested_vfx="zoom rapide + flash blanc",
+            suggested_sfx="son trending TikTok gaming",
+        )
     response = await client.post(
         f"{AI_SERVICE_URL}/video-coach",
         json=payload.model_dump(),
@@ -22,7 +36,13 @@ async def call_video_coach(client: httpx.AsyncClient, payload: VideoCoachRequest
 
 
 async def call_partner_evaluation(client: httpx.AsyncClient, payload: PartnerEvaluationRequest) -> PartnerEvaluationResponse:
-    """Appelle l'AI Service pour évaluer un partenariat."""
+    if MOCK_AI:
+        return PartnerEvaluationResponse(
+            analysis="Bonne compatibilité détectée.",
+            compatibility=78,
+            shared_interests=["gaming", "jeunes 18-25"],
+            conflict_interests=["positionnement prix"],
+        )
     response = await client.post(
         f"{AI_SERVICE_URL}/partner-evaluation",
         json=payload.model_dump(),
@@ -33,10 +53,14 @@ async def call_partner_evaluation(client: httpx.AsyncClient, payload: PartnerEva
 
 
 async def call_critic_video(client: httpx.AsyncClient, payload: dict) -> CriticVideoResponse:
-    """
-    Appelle l'AI Service pour critiquer une vidéo.
-    Payload est un dict car on envoie aussi le chemin du fichier vidéo.
-    """
+    if MOCK_AI:
+        return CriticVideoResponse(
+            analysis="Vidéo solide mais le hook arrive trop tard.",
+            pros=["bonne qualité image", "son clair"],
+            cons=["hook après 3 secondes", "pas de CTA"],
+            critics="Le viewer décroche avant le moment fort.",
+            solution="Commence directement par le moment le plus impactant.",
+        )
     response = await client.post(
         f"{AI_SERVICE_URL}/critic-video",
         json=payload,

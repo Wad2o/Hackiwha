@@ -88,7 +88,7 @@ class Location(BaseModel):
 
 class UserProfile(BaseModel):
     model_config = ConfigDict(populate_by_name=True)
-
+    
     user_id: str = Field(
         default_factory=lambda: str(uuid.uuid4()),
         alias="userId"
@@ -103,8 +103,22 @@ class UserProfile(BaseModel):
 
 
 class VideoCoachRequest(BaseModel):
-    """POST /video-coach"""
+    """POST /video-coach — version complète (usage interne)"""
     user: UserProfile = Field(default_factory=UserProfile)
+    brand: BrandImage
+    posts: List[Post] = Field(default_factory=list)
+    prompt: str = Field(..., description="Ce que l'utilisateur veut promouvoir")
+
+
+class VideoCoachRequestSimple(BaseModel):
+    """
+    POST /video-coach — version frontend.
+    Le frontend envoie juste userId + brand + prompt.
+    Le profil complet est rechargé depuis la DB automatiquement.
+    """
+    model_config = ConfigDict(populate_by_name=True)
+    
+    user_id: str = Field(alias="userId")
     brand: BrandImage
     posts: List[Post] = Field(default_factory=list)
     prompt: str = Field(..., description="Ce que l'utilisateur veut promouvoir")

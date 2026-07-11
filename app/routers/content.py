@@ -9,15 +9,15 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db.database import get_db
-from app.db.models import Brand, Post as PostModel, User
+from app.db.models import Brand, Post as PostModel, User, UserProfileModel
 from app.models.schemas import (
     BrandCreate, BrandOut,
-    CriticVideoRequest, CriticVideoResponse,
+    CriticVideoResponse,
     Experience, Location,
     PartnerEvaluationRequest, PartnerEvaluationResponse,
     PostCreate, PostOut,
     UserCreate, UserOut, UserProfile,
-    VideoCoachRequest, VideoCoachResponse,
+    VideoCoachRequest, VideoCoachRequestSimple, VideoCoachResponse,
 )
 from app.services.ai_client import (
     call_critic_video,
@@ -30,13 +30,46 @@ router = APIRouter(prefix="/content", tags=["Content Generation"])
 UPLOAD_DIR = Path("uploads")
 
 
+# ========== HELPER ==========
+
+async def _get_user_profile(user_id: str, db: AsyncSession) -> UserProfile:
+    """Recharge un UserProfile depuis la DB à partir du userId."""
+    result = await db.execute(
+        select(UserProfileModel).where(UserProfileModel.userId == user_id)
+    )
+    db_profile = result.scalar_one_or_none()
+    if not db_profile:
+        raise HTTPException(
+            status_code=404,
+            detail="Profil introuvable. Lance d'abord POST /content/form-user."
+        )
+    return UserProfile(
+        userId=db_profile.userId,
+        name=db_profile.name,
+        description=db_profile.description,
+        content_type=db_profile.content_type or [],
+        age=db_profile.age,
+        gender=db_profile.gender,
+        location=Location(
+            country=db_profile.country,
+            city=db_profile.city,
+            timezone=db_profile.timezone or "",
+        ),
+        experience=Experience(
+            years=db_profile.experience_years,
+            months=db_profile.experience_months,
+            days=db_profile.experience_days,
+        ),
+    )
+
+
 # ========== AI ENDPOINTS ==========
 
 @router.post("/form-user", response_model=UserProfile)
 async def user_form(
     name: str = Form(""),
-    description: str = Form(""),          # typo corrigée (desciption → description)
-    content_type: str = Form("[]"),
+    description: str = Form(""),
+    content_type: str = Form(""),
     age: int = Form(0),
     gender: str = Form(""),
     country: str = Form(""),
@@ -44,17 +77,20 @@ async def user_form(
     years: int = Form(0),
     months: int = Form(0),
     days: int = Form(0),
+    db: AsyncSession = Depends(get_db),
 ):
     """
-    Reçoit le formulaire user depuis le frontend,
-    construit un UserProfile propre et le renvoie prêt à être envoyé à l'IA.
+    Reçoit le formulaire user, construit un UserProfile et le persiste en DB.
+    Retourne le profil avec son userId — à stocker côté frontend pour les appels suivants.
     """
     try:
-        parsed_content_type = json.loads(content_type) if content_type else []
+        parsed_content_type = json.loads(content_type) if content_type.strip() else []
+        if isinstance(parsed_content_type, str):
+            parsed_content_type = [parsed_content_type]
     except json.JSONDecodeError:
-        raise HTTPException(status_code=400, detail="content_type doit être un JSON valide")
+        parsed_content_type = [c.strip() for c in content_type.split(",") if c.strip()]
 
-    return UserProfile(
+    profile = UserProfile(
         name=name,
         description=description,
         content_type=parsed_content_type,
@@ -64,22 +100,59 @@ async def user_form(
         experience=Experience(years=years, months=months, days=days),
     )
 
+    # Sauvegarde en DB
+    db_profile = UserProfileModel(
+        userId=profile.user_id,
+        name=profile.name,
+        description=profile.description,
+        content_type=profile.content_type,
+        age=profile.age,
+        gender=profile.gender,
+        country=profile.location.country,
+        city=profile.location.city,
+        timezone=profile.location.timezone,
+        experience_years=profile.experience.years,
+        experience_months=profile.experience.months,
+        experience_days=profile.experience.days,
+    )
+    db.add(db_profile)
+    await db.commit()
+
+    return profile
+
 
 @router.post("/video-coach", response_model=VideoCoachResponse)
-async def video_coach(request: VideoCoachRequest, req: Request):
+async def video_coach(
+    request: VideoCoachRequestSimple,
+    req: Request,
+    db: AsyncSession = Depends(get_db),
+):
     """
-    Génère une stratégie virale complète.
-    Envoie user + brand + posts history + prompt à l'AI Service.
+    Génère une stratégie virale.
+    Frontend envoie { userId, brand, posts, prompt } — le profil est rechargé depuis la DB.
     """
+    user_profile = await _get_user_profile(request.user_id, db)
+
+    full_request = VideoCoachRequest(
+        user=user_profile,
+        brand=request.brand,
+        posts=request.posts,
+        prompt=request.prompt,
+    )
+
     try:
         client = await get_ai_client(req)
-        return await call_video_coach(client, request)
+        return await call_video_coach(client, full_request)
     except Exception as e:
         raise HTTPException(status_code=502, detail=f"AI Service error: {str(e)}")
 
 
 @router.post("/partner-evaluation", response_model=PartnerEvaluationResponse)
-async def partner_evaluation(request: PartnerEvaluationRequest, req: Request):
+async def partner_evaluation(
+    request: PartnerEvaluationRequest,
+    req: Request,
+    db: AsyncSession = Depends(get_db),
+):
     """Évalue la compatibilité avec un partenaire."""
     try:
         client = await get_ai_client(req)
@@ -90,15 +163,17 @@ async def partner_evaluation(request: PartnerEvaluationRequest, req: Request):
 
 @router.post("/critic-video", response_model=CriticVideoResponse)
 async def critic_video(
-    req: Request,                          # Request en premier, jamais = None
+    req: Request,
     video: UploadFile = File(...),
-    user: str = Form("{}"),
+    user_id: str = Form(...),              # juste l'userId, on recharge depuis DB
     brand: str = Form(...),
     posts: str = Form("[]"),
     prompt: str = Form(...),
     db: AsyncSession = Depends(get_db),
 ):
-    """Upload une vidéo pour critique par l'IA."""
+    """Upload une vidéo pour critique par l'IA. Recharge le profil via userId."""
+    user_profile = await _get_user_profile(user_id, db)
+
     UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
     video_id = str(uuid.uuid4())
     file_path = UPLOAD_DIR / f"{video_id}_{video.filename}"
@@ -108,7 +183,7 @@ async def critic_video(
 
     payload = {
         "video_path": str(file_path),
-        "user": json.loads(user),
+        "user": user_profile.model_dump(by_alias=True),
         "brand": json.loads(brand),
         "posts": json.loads(posts),
         "prompt": prompt,
@@ -125,7 +200,6 @@ async def critic_video(
 
 @router.post("/users", response_model=UserOut)
 async def create_user(user: UserCreate, db: AsyncSession = Depends(get_db)):
-    """Crée un nouvel utilisateur."""
     db_user = User(email=user.email)
     db.add(db_user)
     await db.commit()
@@ -135,7 +209,6 @@ async def create_user(user: UserCreate, db: AsyncSession = Depends(get_db)):
 
 @router.get("/users/{userId}", response_model=UserOut)
 async def get_user(userId: str, db: AsyncSession = Depends(get_db)):
-    """Récupère un utilisateur par ID."""
     result = await db.execute(select(User).where(User.userId == userId))
     user = result.scalar_one_or_none()
     if not user:
@@ -146,32 +219,27 @@ async def get_user(userId: str, db: AsyncSession = Depends(get_db)):
 # ========== CRUD BRANDS ==========
 
 def _brand_to_flat(brand: BrandCreate) -> dict:
-    """
-    Aplatit BrandImage (imbriqué) vers les colonnes DB (flat).
-    À adapter selon le nom exact de tes colonnes en DB.
-    """
     return {
-        "userId":               brand.user_id,
-        "logo":                 brand.visual.logo,
-        "photography":          brand.visual.photography,
-        "color_palette":        brand.visual.color_palette,
-        "title_typography":     brand.visual.typography.titles,
-        "text_typography":      brand.visual.typography.texts,
-        "extras_typography":    brand.visual.typography.extra,
-        "highlights_typography":brand.visual.typography.highlight,
-        "vocabulary":           brand.tone.vocabulary,
-        "humor_level":          brand.tone.humor_level,
-        "formality":            brand.tone.formality,
-        "sentence_rhythm":      brand.tone.sentence_rhythm,
-        "target_audience":      brand.positioning.target_audience,
-        "problem_statement":    brand.positioning.problem_statement,
-        "flare":                brand.positioning.flare,
+        "userId":                brand.user_id,
+        "logo":                  brand.visual.logo,
+        "photography":           brand.visual.photography,
+        "color_palette":         brand.visual.color_palette,
+        "title_typography":      brand.visual.typography.titles,
+        "text_typography":       brand.visual.typography.texts,
+        "extras_typography":     brand.visual.typography.extra,
+        "highlights_typography": brand.visual.typography.highlight,
+        "vocabulary":            brand.tone.vocabulary,
+        "humor_level":           brand.tone.humor_level,
+        "formality":             brand.tone.formality,
+        "sentence_rhythm":       brand.tone.sentence_rhythm,
+        "target_audience":       brand.positioning.target_audience,
+        "problem_statement":     brand.positioning.problem_statement,
+        "flare":                 brand.positioning.flare,
     }
 
 
 @router.post("/brands", response_model=BrandOut)
 async def create_brand(brand: BrandCreate, db: AsyncSession = Depends(get_db)):
-    """Crée ou met à jour l'identité de marque d'un utilisateur."""
     result = await db.execute(select(User).where(User.userId == brand.user_id))
     if not result.scalar_one_or_none():
         raise HTTPException(status_code=404, detail="User not found")
@@ -197,7 +265,6 @@ async def create_brand(brand: BrandCreate, db: AsyncSession = Depends(get_db)):
 
 @router.get("/brands/{userId}", response_model=BrandOut)
 async def get_brand(userId: str, db: AsyncSession = Depends(get_db)):
-    """Récupère la marque d'un utilisateur."""
     result = await db.execute(select(Brand).where(Brand.userId == userId))
     brand = result.scalar_one_or_none()
     if not brand:
@@ -209,7 +276,6 @@ async def get_brand(userId: str, db: AsyncSession = Depends(get_db)):
 
 @router.post("/posts", response_model=PostOut)
 async def create_post(post: PostCreate, db: AsyncSession = Depends(get_db)):
-    """Sauvegarde un post généré par l'IA ou ajouté manuellement."""
     result = await db.execute(select(User).where(User.userId == post.user_id))
     if not result.scalar_one_or_none():
         raise HTTPException(status_code=404, detail="User not found")
@@ -236,7 +302,6 @@ async def create_post_from_form(
     confidence_score: float = Form(None),
     db: AsyncSession = Depends(get_db),
 ):
-    """Crée un post depuis un formulaire frontend."""
     result = await db.execute(select(User).where(User.userId == userId))
     if not result.scalar_one_or_none():
         raise HTTPException(status_code=404, detail="User not found")
@@ -267,14 +332,12 @@ async def create_post_from_form(
 
 @router.get("/posts/{userId}", response_model=List[PostOut])
 async def get_user_posts(userId: str, db: AsyncSession = Depends(get_db)):
-    """Récupère tous les posts d'un utilisateur."""
     result = await db.execute(select(PostModel).where(PostModel.userId == userId))
     return result.scalars().all()
 
 
 @router.delete("/posts/{postId}")
 async def delete_post(postId: str, db: AsyncSession = Depends(get_db)):
-    """Supprime un post."""
     result = await db.execute(select(PostModel).where(PostModel.postId == postId))
     post = result.scalar_one_or_none()
     if not post:
