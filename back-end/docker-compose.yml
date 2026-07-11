@@ -1,0 +1,14 @@
+services:
+  backend:
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    environment:
+      PORT: "8000"
+      AI_SERVICE_URL: "http://host.docker.internal:8001"
+    volumes:
+      - ./app/db/viralcoach.db:/app/app/db/viralcoach.db
+      - ./app/db/uploads:/app/app/db/uploads
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
