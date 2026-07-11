@@ -79,7 +79,7 @@ export interface PostContent {
 export interface PostOut extends PostContent {
   postId: string;
   userId: string;
-  design_direction: VisualIdentity | null;
+  design_direction: string | null;
   analysis: string | null;
   created_at: string;
 }
@@ -92,7 +92,7 @@ export interface VideoCoachResponse {
   is_loop: boolean;
   suggested_vfx: string;
   suggested_sfx: string;
-  design_direction: VisualIdentity;
+  design_direction: string;
 }
 
 export interface PartnerEvaluationResponse {
@@ -158,7 +158,7 @@ export interface NewPostFields {
   is_loop?: boolean;
   suggested_vfx?: string;
   suggested_sfx?: string;
-  design_direction?: VisualIdentity;
+  design_direction?: string;
   analysis?: string;
   confidence_score?: number;
 }
@@ -173,7 +173,7 @@ export function createPost(authUserId: string, post: NewPostFields, token: strin
   form.set('is_loop', String(post.is_loop ?? false));
   form.set('suggested_vfx', post.suggested_vfx ?? '');
   form.set('suggested_sfx', post.suggested_sfx ?? '');
-  form.set('design_direction', JSON.stringify(post.design_direction ?? {}));
+  form.set('design_direction', JSON.stringify(post.design_direction ?? ''));
   form.set('analysis', post.analysis ?? '');
   if (post.confidence_score != null) {
     form.set('confidence_score', String(post.confidence_score));

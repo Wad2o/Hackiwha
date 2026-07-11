@@ -133,7 +133,7 @@ class VideoCoachResponse(BaseModel):
     is_loop: bool = False
     suggested_vfx: str = ""
     suggested_sfx: str = ""
-    design_direction: VisualIdentity = Field(default_factory=VisualIdentity)
+    design_direction: str = ""
 
 
 class PartnerEvaluationRequest(BaseModel):
@@ -209,7 +209,7 @@ class PostCreate(BaseModel):
     is_loop: bool = False
     suggested_vfx: Optional[str] = None
     suggested_sfx: Optional[str] = None
-    design_direction: Optional[VisualIdentity] = None
+    design_direction: Optional[str] = None
     analysis: Optional[str] = None
     confidence_score: Optional[float] = Field(default=None, ge=0, le=1)
 
@@ -226,7 +226,7 @@ class PostOut(BaseModel):
     is_loop: bool
     suggested_vfx: Optional[str] = None
     suggested_sfx: Optional[str] = None
-    design_direction: Optional[VisualIdentity] = None
+    design_direction: Optional[str] = None
     analysis: Optional[str] = None
     confidence_score: Optional[float] = Field(default=None, ge=0, le=1)
     created_at: datetime

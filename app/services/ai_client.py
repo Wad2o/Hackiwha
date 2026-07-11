@@ -8,7 +8,7 @@ from app.models.schemas import (
 )
 
 AI_SERVICE_URL = "http://localhost:8001"
-MOCK_AI = os.getenv("MOCK_AI", "true") == "true"  # true par défaut en dev
+MOCK_AI = os.getenv("MOCK_AI", "false").lower() == "true"
 
 
 async def get_ai_client(request: Request) -> httpx.AsyncClient:
